@@ -1,30 +1,45 @@
-# Mucha Maciej - Doom dla opornych
+# pacman-clone
 
-### Zarządzanie aplikacją
+Classic Pac-Man arcade game implemented in C++ with SFML. Features grid-rail movement, ghost frightened states triggered by power-ups, edge teleportation, and a two-player local mode.
 
-- ESC - Wyłączenie okna
+<p align="center">
+  <img src="demo.gif" alt="demo">
+</p>
 
-### Sterowanie duchem
+## Features
 
-- W - poruszanie się do góry
-- S - poruszanie się do dołu
-- A - poruszanie się w lewo
-- D - poruszanie się w prawo
+- **Grid-rail movement** — tile-locked movement with direction queuing for both players
+- **Ghost frightened state** — ghosts slow down and become vulnerable when Pac-Man collects a power-up
+- **Edge teleportation** — Pac-Man and ghosts wrap around map edges
+- **Two-player local** — Pac-Man (arrow keys) vs. Ghost (WASD)
 
-### Sterowanie graczem
+## Requirements
 
-- Strzałka do góry - poruszanie się do góry
-- Strzałka do dołu - poruszanie się do dołu
-- Strzałka w lewo - poruszanie się w lewo
-- Strzałka w prawo - poruszanie się w prawo
+- CMake 3.14+
+- C++23 compiler (MSVC, GCC, Clang)
 
-### Kompilacja
+## Build & Run
 
-- g++ -IC:\SFML-2.5.1\include -c src/main.cpp -o Main.o
-- g++ -IC:\SFML-2.5.1\include -c src/Fruit.cpp -o Fruit.o
-- g++ -IC:\SFML-2.5.1\include -c src/SpecialFruit.cpp -o SpecialFruit.o
-- g++ -IC:\SFML-2.5.1\include -c src/Ghost.cpp -o Ghost.o
-- g++ -IC:\SFML-2.5.1\include -c src/Pacman.cpp -o Pacman.o
-- g++ -IC:\SFML-2.5.1\include -c src/Game.cpp -o Game.o
-- g++ -IC:\SFML-2.5.1\include -c src/Map.cpp -o map.o
-- g++ -LC:\SFML-2.5.1\lib Main.o Fruit.o SpecialFruit.o Ghost.o Pacman.o Game.o map.o -o app.exe -lmingw32 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-main -mwindows
+Using the provided script:
+
+```bash
+./build.sh
+```
+
+Or manually with CMake:
+
+```bash
+cmake -B build
+cmake --build build
+./build/Debug/Pacman.exe
+```
+
+## Controls
+
+| Action     | Pac-Man | Ghost |
+|------------|---------|-------|
+| Move up    | ↑       | W     |
+| Move down  | ↓       | S     |
+| Move left  | ←       | A     |
+| Move right | →       | D     |
+| Quit       | ESC     | ESC   |
