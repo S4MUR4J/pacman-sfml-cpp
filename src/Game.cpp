@@ -1,7 +1,7 @@
-#include "Game.h"
+﻿#include "game.h"
 
 /**
- * Inicjacja podstawowych zmiennych gry takich jak stan gry i punktacja
+ * Initialization of basic game variables such as game state and score
  */
 void Game::initVariables() {
     this->endGame = false;
@@ -9,7 +9,7 @@ void Game::initVariables() {
 }
 
 /**
- * Funkcja unicjująca tablicę przechowującej wszystkie bloki mapy, na podstawie szkicu mapu
+ * Function initializing the array holding all map blocks, based on the map sketch
  */
 void Game::initMapTiles()
 {
@@ -22,8 +22,7 @@ void Game::initMapTiles()
 }
 
 /**
- * Funkcja unicjująca tablicę przechowującej wszystkie owoce i owoce specjalne,
- *  na podstawie szkicu mapu
+ * Function initializing the array holding all fruits and special fruits, based on the map sketch
  */
 void Game::initFruits() {
     for(int i = 0; i < mapHeight; i++) {
@@ -39,8 +38,7 @@ void Game::initFruits() {
 }
 
 /**
- * Inicjacja okna gry, ustawianie jego wielkości, limitu klatek na sekundę i jego
- * przycisków takich jak minimalizacja zamknięcie.
+ * Initialization of the game window, setting its size, frame rate limit and buttons such as minimize and close.
  */
 void Game::initWindow() {
     this->videoMode.width = mapWidth * cellSize;
@@ -50,8 +48,7 @@ void Game::initWindow() {
 }
 
 /**
- * Funkcja ta przechowuje logikę kończenia gry dzieję się to gdy zjemy wszystkie owoce
- * i wszystkie owoce specjalne uznajemy wtedy to za wygraną grę
+ * This function contains the logic for ending the game. It happens when we eat all fruits and all special fruits, then we consider it a game win.
  */
 void Game::manageEndGame()
 {
@@ -67,7 +64,7 @@ void Game::manageEndGame()
 }
 
 /**
- * Konstruktor klasy silnika gry inicjuje zmienne, budowę mapy, ustawienie owoców i okna
+ * Constructor of the game engine class initializes variables, map construction, fruit placement and window setup
  */
 Game::Game() {
     this->initVariables();
@@ -77,36 +74,34 @@ Game::Game() {
 }
 
 /**
- * Destruktor klasy silnika gry usuwa okno i zamyka aplikacje
+ * Destructor of the game engine class deletes the window and closes the application
  */
 Game::~Game() {
     delete this->window;
 }
 
 /**
- * Funkcja ta to getter infromacji o ostanie gry
- * 
- * @return true gra została skończona
- * @return false gra nie została skończona
+ * This function is a getter for information about the end of the game
+ *
+ * @return true game has ended
+ * @return false game has not ended
  */
 const bool Game::getEndGame() const {
     return this->endGame;
 }
 
 /**
- * Funkcja przekazuje informacje na temat stanu gry, czy jest w trakcie działania 
- * czy została właśnie ukończona przez przegranie lub zamknięcie okna
- * 
- * @return true gra się toczy
- * @return false gra została skończona
+ * Function provides information about the game state, whether it is running or has just ended by losing or closing the window
+ *
+ * @return true game is running
+ * @return false game has ended
  */
 const bool Game::executing() const {
     return this->window->isOpen() && this->endGame == false;
 }
 
 /**
- * Funkcja sprawdzająca eventy, w celu zamknięcia okna. Jeśli klikniemy ESC lub
- * gra zostanie ukończona zamykamy działanie programu i okno.
+ * Function checking events to close the window. If we click ESC or the game is finished, we close the program and window.
  */
 void Game::pollEvents() {
     while (this->window->pollEvent(this->event))
@@ -125,9 +120,8 @@ void Game::pollEvents() {
 }
 
 /**
- * W tej funkcji sprawdzamy kolizję między obiektami gry, takimi jak owoce, 
- * specjalne owoce i gracz. W przypadku owoców pozwala nam na ich podniesienia
- * i zwiększenie punktacji.
+ * In this function we check collisions between game objects such as fruits, special fruits and the player.
+ * In the case of fruits, it allows us to pick them up and increase the score.
  */
 
 void Game::updateCollision() {
@@ -147,8 +141,7 @@ void Game::updateCollision() {
 }
 
 /**
- * Aktualizacja wszystkich obiektów i eventów naszego programu, aktualnie również zmieniająca
- * stan przerażenia ducha Wywołujemy to również całą logikę silnika.
+ * Update of all objects and events in our program, also currently changing the ghost's frightened state. We also call the entire engine logic here.
  */
 void Game::update() {
     this->pollEvents();
@@ -170,8 +163,7 @@ void Game::update() {
 }
 
 /**
- * Funkcja w, której rysujemy wszystkie obiekty klasy na ekranie. Na początku czyścimy ekran 
- * drukujemy zawartość i czyścimy ekran. Dzieję się to co klatkę.
+ * Function in which we draw all class objects on the screen. We first clear the screen, print the content and display it. This happens every frame.
  */
 void Game::render() {
     this->window->clear();
@@ -195,4 +187,5 @@ void Game::render() {
 
     this->window->display();
 }
+
 

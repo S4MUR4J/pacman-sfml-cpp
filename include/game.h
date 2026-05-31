@@ -1,25 +1,24 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 #include <ctime>
 #include <vector>
 #include <sstream>
 
-#include "Pacman.h"
-#include "Fruit.h"
-#include "Map.h"
-#include "SpecialFruit.h"
-#include "Ghost.h"
-#include "Constants.h"
+#include "pacman.h"
+#include "fruit.h"
+#include "map.h"
+#include "special_fruit.h"
+#include "ghost.h"
+#include "constants.h"
 #include <array>
 
 /**
  * @class Game
- * 
- * Klasa ta jest silnikiem gry składa w całość wszystkie inne klasy i interakcje między nimi.
- * Jako jedyna jest bezpośrednio wywołana w mainie. Odpowiada za zebranie rysowania obiektów na ekranie,
- * aktualizacje wszystkich obiektów oraz interakcje między nimi. Przechowuje również okno, które jest
- * w niej wywoływane i przepuszczane jako parametr do innych klas.
+ *
+ * This class is the game engine that puts together all other classes and interactions between them.
+ * It is the only one directly called in main. It is responsible for drawing objects on the screen, updating all objects and interactions between them.
+ * It also stores the window, which is created in it and passed as a parameter to other classes.
  */
 class Game
 {

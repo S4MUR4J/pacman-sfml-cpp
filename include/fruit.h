@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -6,21 +6,20 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-#include "Constants.h"
+#include "constants.h"
 
 /**
  * @class Fruit
- * 
- * Klasa przechowyjąca informacje na temat mniejszych owoców. Odpowiada za ustawienie
- * parametów tego obiektu, aktualizacje ich oraz rysowanie na ekranie.
+ *
+ * Class storing information about smaller fruits. Responsible for setting the parameters of this object, updating them and drawing on the screen.
  */
 
 /**
- * Szablon ten jest getterem różnych typów zmiennych
- * 
- * @param data zmienna ktory chcemy przekazać
- * 
- * @return zwracamy zmienna obiektu
+ * This template is a getter for different types of variables
+ *
+ * @param data variable that we want to pass
+ *
+ * @return we return the object variable
 */
 template <typename T>
 T getShapeTemplate(T data) {

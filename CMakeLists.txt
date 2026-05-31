@@ -3,24 +3,24 @@ project(Pacman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Pacman 
-    src/main.cpp 
-    src/Game.cpp 
-    src/Pacman.cpp
-    src/Fruit.cpp
-    src/Map.cpp
-    src/SpecialFruit.cpp
-    src/Ghost.cpp
+add_executable(Pacman
+    src/main.cpp
+    src/game.cpp
+    src/pacman.cpp
+    src/fruit.cpp
+    src/map.cpp
+    src/special_fruit.cpp
+    src/ghost.cpp
 
-    headers/Game.h
-    headers/Pacman.h
-    headers/Fruit.h
-    headers/Constants.h
-    headers/Map.h
-    headers/SpecialFruit.h
-    headers/Ghost.h)
+    include/game.h
+    include/pacman.h
+    include/fruit.h
+    include/constants.h
+    include/map.h
+    include/special_fruit.h
+    include/ghost.h)
 
-include_directories(headers /usr/include c:/SFML/include)
+include_directories(include /usr/include c:/SFML/include)
 
 set(SFML_ROOT c:/SFML)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")

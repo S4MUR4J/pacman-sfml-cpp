@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 #include <cmath>
@@ -7,13 +7,12 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-#include "Constants.h"
+#include "constants.h"
 
 /**
  * @class Ghost
- * 
- * Klasa ta przechowuje dane oraz całą logikę działania przeciwników (tzw. duchów). Zmienia dane
- * na temat obiektu, rysuje go oraz odpowiada za poruszanie się.
+ *
+ * This class stores data and the entire logic of the opponents (so-called ghosts). It changes data about the object, draws it and is responsible for movement.
  */
 
 class Ghost {

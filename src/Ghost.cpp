@@ -1,8 +1,7 @@
-#include "Ghost.h"
+﻿#include "ghost.h"
 
 /**
- * Funkcja odpowiadająca za inicjację podstawowych zmiennych potrzebnych
- * do rozpoczęcia działań na obiekcie
+ * Function responsible for initializing basic variables needed to start working with the object
  */
 void Ghost::initVariables() {
     this->movementSpeed = 20.f;
@@ -16,11 +15,10 @@ void Ghost::initVariables() {
 }
 
 /**
- * Funkcja odpowiadająca za inicjacje wyglądu obiektu, ustawienie
- * pozycji, koloru i wielkości
- * 
- * @param x położenie ducha w osi X
- * @param y położenie ducha w osi Y
+ * Function responsible for initializing object appearance, setting position, color and size
+ *
+ * @param x ghost position on X axis
+ * @param y ghost position on Y axis
  */
 void Ghost::initShapes(float x, float y) {
     this->shape.setFillColor(sf::Color::Magenta);
@@ -30,11 +28,11 @@ void Ghost::initShapes(float x, float y) {
 
 
 /**
- * Konstruktor tworzący klasę ducha
- * 
- * @param window okno na którym będzie tworzony duch
- * @param x położenie ducha w osi X
- * @param y położenie ducha w osi Y
+ * Constructor creating the ghost class
+ *
+ * @param window window on which the ghost will be created
+ * @param x ghost position on X axis
+ * @param y ghost position on Y axis
  */
 Ghost::Ghost(const sf::RenderWindow& window, float x, float y)
 {
@@ -42,30 +40,21 @@ Ghost::Ghost(const sf::RenderWindow& window, float x, float y)
     this->initVariables();
 }
 
-/**
- * Destuktor obiektu ducha
- */
 Ghost::~Ghost()
 {
 
 }
 
-/**
- * Funkcja to getter shape'u obiektu ducha
- * 
- * @return sf::RectangleShape zwracany shape obiektu
- */
 sf::RectangleShape Ghost::getShape()
 {
     return this->shape;
 }
 
 /**
- * Funkcja ta to getter właściwości przerażenia ducha, czyli stanu gdy gracz
- * zje specjalny owoc
- * 
- * @return true duch jest przerażony
- * @return false duch nie jest przerażony
+ * This function is a getter for the ghost's fear property, which is the state when the player eats a special fruit
+ *
+ * @return true ghost is frightened
+ * @return false ghost is not frightened
  */
 bool Ghost::isEfected()
 {
@@ -73,9 +62,9 @@ bool Ghost::isEfected()
 }
 
 /**
- * Funkcja oblicza pozycje globalna ducha według środka i zwraca jej wartość
- * 
- * @return sf::Vector2f wektor położenia środka obiektu
+ * Function calculates the global position of the ghost according to its center and returns its value
+ *
+ * @return sf::Vector2f vector of the center position of the object
 */
 sf::Vector2f Ghost::getPlayerOrigin()
 {
@@ -86,10 +75,9 @@ sf::Vector2f Ghost::getPlayerOrigin()
 }
 
 /**
- * Funkcja sprawdza kolejną pozycję na gridzie i ustawia ją do zmiennej w
- * celu kolejnych sprawdzeń w logice poruszania sie
- * 
- * @param movDir aktualny kierunek poruszania się
+ * Function checks the next position on the grid and sets it to a variable for further checks in the movement logic
+ *
+ * @param movDir current direction of movement
 */
 void Ghost::nextPosition(MoveDirection moveDir) {
 
@@ -122,14 +110,13 @@ void Ghost::nextPosition(MoveDirection moveDir) {
 }
 
 /**
- * Funkcja odpowiadająca za zmianę kierunku poruszania się w zależności od 
- * wczytanego inputu z klawiatury
- * 
- * @param left przycisk do poruszania sie w lewo
- * @param right przycisk do poruszania sie w prawo
- * @param down przycisk do poruszania sie w dół
- * @param top przycisk do poruszania sie w gore
- * @param offset przesunięcie postaci
+ * Function responsible for changing the direction of movement depending on the keyboard input
+ *
+ * @param left button to move left
+ * @param right button to move right
+ * @param down button to move down
+ * @param top button to move up
+ * @param offset character offset
 */
 
 void Ghost::changeDir(sf::Keyboard::Key left, sf::Keyboard::Key right,
@@ -154,10 +141,9 @@ void Ghost::changeDir(sf::Keyboard::Key left, sf::Keyboard::Key right,
 }
 
 /**
- * Funkcja ta odpowiada za logikę jaką za sobie niesie bycie w stanie przerażenia i 
- * nie wpływa to na na możliwość zniszczenia gracza i prędkość duch
- * 
- * @param isOff parametr wykorzystywany do aktywacji i dezaaktywacji efektu przerażenia
+ * This function is responsible for the logic of being in a frightened state and does not affect the ability to destroy the player and ghost speed
+ *
+ * @param isOff parameter used to activate and deactivate the frightened effect
  */
 void Ghost::Effect(bool isOff)
 {
@@ -170,14 +156,12 @@ void Ghost::Effect(bool isOff)
         this->movementSpeed = 0.1f;
     }
 
-    //std::cout << this->movementSpeed << std::endl;
 }
 
 /**
- * Jeśli duch znajdzie się na krawędzi ekranu w osi X zostaje przeniesiony na drugą stronę
- * ekranu
- * 
- * @param target ekran z którego uzyskujemy jego rozmiar
+ * If the ghost is at the edge of the screen on the X axis, it is moved to the other side of the screen
+ *
+ * @param target screen from which we get its size
  */
 void Ghost::updateTeleportOnEdge(const sf::RenderTarget *target) {
     if (this->nextIndexX < 0 && this->indexX == 0) {   
@@ -189,12 +173,12 @@ void Ghost::updateTeleportOnEdge(const sf::RenderTarget *target) {
 }
 
 /**
- * Funkcja sprawdza sąsiednie pola gridu w celu znalezienia kolizji ze ścianą
- * 
- * @param posX pozycja ducha w osi X
- * @param posY pozycja ducha w osi Y
- * @return true występuje ściana dla podanego kierunku poruszania się
- * @return false nie występuje ściana dla podanego kierunku poruszania się
+ * Function checks neighboring grid fields to find a wall collision
+ *
+ * @param posX ghost position on X axis
+ * @param posY ghost position on Y axis
+ * @return true wall exists for the given direction of movement
+ * @return false wall does not exist for the given direction of movement
 */
 bool Ghost::collision(float posX, float posY)
 {
@@ -238,11 +222,10 @@ bool Ghost::collision(float posX, float posY)
 }
 
 /**
- * Funkcja ta posiada logikę poruszania sie ducha, który porusza się po gridzie, może
- * poruszać się tam gdzie wartość nie wynosi 1.
- * 
- * @param x aktualne położenie gracza w osi X
- * @param y aktualne położenie gracza w osi Y
+ * This function contains the logic for the ghost's movement, which moves on the grid and can only move where the value is not 1.
+ *
+ * @param x current player position on X axis
+ * @param y current player position on Y axis
  */
 void Ghost::updateInput(float x, float y)
 {
@@ -286,11 +269,11 @@ void Ghost::updateInput(float x, float y)
 }
 
 /**
- * Funkcja do wywoływania logiki ducha w silniku gry
- * 
- * @param target ekran na którym znajduje się duch
- * @param x aktualne położenie ducha na osi X
- * @param y aktualne położenie ducha na osi Y
+ * Function for calling ghost logic in the game engine
+ *
+ * @param target screen on which the ghost is located
+ * @param x current ghost position on X axis
+ * @param y current ghost position on Y axis
  */
 void Ghost::update(const sf::RenderTarget * target, float x, float y)
 {
@@ -300,11 +283,12 @@ void Ghost::update(const sf::RenderTarget * target, float x, float y)
 }
 
 /**
- * Funkcja odpowiadająca za rysowanie ducha na ekranie
- * 
- * @param target ekran na którym rysowany jest obiekt ducha
+ * Function responsible for drawing the ghost on the screen
+ *
+ * @param target screen on which the ghost object is drawn
  */
 void Ghost::render(sf::RenderTarget * target)
 {
     target->draw(this->shape);
 }
+

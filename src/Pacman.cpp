@@ -1,8 +1,7 @@
-#include "Pacman.h"
+﻿#include "pacman.h"
 
 /**
- * W funkcji następuje inicjacja podstawowych zmiennych potrzebnych do rozpoczęcia 
- * działań na obiekcie
+ * Function initializes basic variables needed to start working with the object
  */
 void Pacman::initVariables() {
     this->movementSpeed = 1.f;
@@ -14,7 +13,7 @@ void Pacman::initVariables() {
 }
 
 /**
- * Inicjacja wyglądu obiektu klasy, ustawienie koloru i średnicy
+ * Initialization of the class object appearance, setting color and radius
  */
 void Pacman::initShapes() {
     this->shape.setFillColor(sf::Color::Yellow);
@@ -22,10 +21,10 @@ void Pacman::initShapes() {
 }
 
 /**
- * Konstruktor tworzący obiekt gracza
- * 
- * @param x pozycja startowa gracza na osi X 
- * @param y pozycja startowa gracza na osi X 
+ * Constructor creating player object
+ *
+ * @param x player's starting position on X axis
+ * @param y player's starting position on Y axis
  */
 Pacman::Pacman(float x, float y) {
     this->shape.setPosition(x, y);
@@ -33,40 +32,25 @@ Pacman::Pacman(float x, float y) {
     this->initShapes();
 }
 
-/**
- * Destuktor obiektu
- */
 Pacman::~Pacman() {
     
 }
 
-/**
- * Funkcja jest getter'em Shape'u pacmana wykorzystywana do logiki w silniku 
- *
- * 
- * @return const sf::CircleShape& - zwracany shape obiektu
- */
 const sf::CircleShape & Pacman::getShape() const {
     return this->shape;
 }
 
-/**
- * Funkcja jest getter'em informacji o interakcji z specjalnym owocem
- * 
- * @return true nasz gracz ma boost spowodowanego zjedzeniem specjalnego owocu
- * @return false nasz gracz nie ma boost'u czyli nie zjadł specjalnego owacu
- */
 bool Pacman::isBoosted()
 {
     return this->boosted;
 }
 
 /**
- * Funkcja daje nam informacje na temat możliwości zmiany kierunku spowodowana
- * miejscem położenia na gridzie. Jeśli nasz gracz znajduje się blisko zakrętu
- * 
- * @return true gracz moze zmienić kierunek
- * @return false gracz nie może zmienić kierunku
+ * Function gives us information about the possibility of changing direction caused by the position on the grid.
+ * If our player is close to a turn
+ *
+ * @return true player can change direction
+ * @return false player cannot change direction
  */
 bool Pacman::canChangeDir()
 {
@@ -78,10 +62,9 @@ bool Pacman::canChangeDir()
 }
 
 /**
- * Funkcja ta zbiera informacje z klawiatury na temat wyboru użytkownika programu
- * w, którą stronę decyduje się iść. Tak samo ma zmienna changed, która pomaga nam w
- * przypadku gdy nie możemy skręcić wtedy postać wraca do poprzedniego kierunku. Ściśle 
- * powiązana z funkcją updateInput().
+ * This function collects information from the keyboard about the user's choice of direction.
+ * Similarly, the changed variable helps us in case we cannot turn, then the character returns to the previous direction.
+ * Strictly related to the updateInput() function.
  */
 void Pacman::railMoveHelper()
 {
@@ -120,9 +103,9 @@ void Pacman::railMoveHelper()
 }
 
 /**
- * W tej funkcji zgodnie z wybranym kierunkiem jest poruszany gracz po mapie, w
- * zależności od kierunku jego pozycję zbieramy w inny sposób do currentX, ze wględu
- * na działanie samego sfml'a. Jeśli naprzeciw kierunku gracza jest ściana ten się zatrzymuje.
+ * In this function, according to the selected direction, the player is moved on the map.
+ * Depending on the direction, we collect his position in a different way to currentX, due to the operation of SFML itself.
+ * If there is a wall in front of the player's direction, it stops.
  */
 void Pacman::updateInput() {
 
@@ -174,8 +157,8 @@ void Pacman::updateInput() {
 }
 
 /**
- * Funkcja ta to timer zgodnie z jego ustawieniem zmniejszamy czas aż dojdziemy do zera.
- * Ściśle związana z funkcja boost, którą wywołuje po upłynięciu czasu wyłączając boost
+ * This function is a timer that decreases the time according to its setting until we reach zero.
+ * Strictly related to the boost function, which is called after the time elapses, turning off the boost.
  */
 void Pacman::boostTimer()
 {
@@ -186,10 +169,10 @@ void Pacman::boostTimer()
 }
 
 /**
- * Funkcja ta przetrzymuje logikę aktywowania, dezaktywowania boost'u w zależności
- * od parametru. Tak samo ustawia timer jego działania
- * 
- * @param active tu przy wywołaniu przekazujemy czy wyłączamy (false) czy włączamy boost (true)
+ * This function holds the logic for activating and deactivating the boost depending on the parameter.
+ * It also sets the timer for its operation.
+ *
+ * @param active here when called we pass whether we are turning off (false) or turning on boost (true)
  */
 void Pacman::boost(bool active)
 {
@@ -205,10 +188,10 @@ void Pacman::boost(bool active)
 }
 
 /**
- * Funkcja ta jeśli znajdujemy się na krawędzi mapy na osi X (mamy dwa takie tunele)
- * przenosi nas na druga stronę tunelu.
- * 
- * @param target ekran po po którym porusza się obiekt
+ * This function, if we are at the edge of the map on the X axis (we have two such tunnels),
+ * moves us to the other side of the tunnel.
+ *
+ * @param target screen on which the object is moving
  */
 void Pacman::updateTeleportOnEdge(const sf::RenderTarget *target) {
     if (this->shape.getGlobalBounds().left <= 0.f) {   
@@ -220,12 +203,11 @@ void Pacman::updateTeleportOnEdge(const sf::RenderTarget *target) {
 }
 
 /**
- * Aktualizacja całej logiki wywoływania funkcji w pętli programu
- * 
- * @param target parametr potrzebny nam do zdobycia wielkości ekranu
+ * Update of the entire logic for calling functions in the program loop
+ *
+ * @param target parameter we need to get the screen size
  */
 void Pacman::update(const sf::RenderTarget * target) {
-    //std::cout << "Pos X: " << this->shape.getPosition().x << "Pos Y: " << this->shape.getPosition().y << std::endl;
     this->boostTimer();
     this->railMoveHelper();
     this->updateInput();
@@ -233,10 +215,11 @@ void Pacman::update(const sf::RenderTarget * target) {
 }
 
 /**
- * Funkcja drukuje nam obiekt tej klasy na ekranie
- * 
- * @param target ekran na, którym drukujemy
+ * Function prints this class object on the screen
+ *
+ * @param target screen on which we print
  */
 void Pacman::render(sf::RenderTarget * target) {
     target->draw(this->shape);
 }
+

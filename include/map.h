@@ -1,18 +1,17 @@
-#pragma once
+﻿#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-#include "Constants.h"
+#include "constants.h"
 
 /**
  * @class Map
- * 
- * Klasa odpowiadająca za inicjację wyglądu bloku mapy, ustawienie jego pozycji oraz
- * ich renderowania, gdzie jest niezależna od budowy struktury mapy
- * 
+ *
+ * Class responsible for initializing the appearance of the map block, setting its position and rendering it,
+ * where it is independent of the structure of the map
  */
 class Map {
 private:

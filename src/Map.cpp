@@ -1,11 +1,10 @@
-#include "Map.h"
+﻿#include "map.h"
 
 /**
-*   Funkcja inicjuje podstawowe parametry obiektu tj. rozmiar,
-*   kolor oraz pozycja
+*   Function initializes basic object parameters i.e. size, color and position
 *
-*   @param x pozycja x na którą ustawimy obiekt
-*   @param y pozycja y na którą ustawimy obiekt
+*   @param x x position where we will place the object
+*   @param y y position where we will place the object
 *
 */
 void Map::initShape(float x, float y)
@@ -16,32 +15,29 @@ void Map::initShape(float x, float y)
 }
 
 /**
-*   Konstruktor obiektu odpowiadający za wywołanie obiektu a z nim
-*   inicjację kształtu
-
-*   @param window okno na którym jest inicjowany obiekt
-*   @param x pozycja x na którym będzie znajdować się obiekt
-*   @param y pozycja y na którym będzie znajdować się obiekt
+*   Object constructor responsible for object initialization and shape initialization
+*
+*   @param window window on which the object is initialized
+*   @param x x position where the object will be located
+*   @param y y position where the object will be located
 */
 Map::Map(const sf::RenderWindow& window, float x, float y)
 {
     this->initShape(x, y);
 }
 
-/**
-* Destruktor obiektu
-*/
 Map::~Map()
 {
 
 }
 
 /**
-*   funkcja rysuje pojedyncze obiekty mapy na oknie
-
-*   @param target okno na którym ma być rysowany obiekt 
+*   Function draws individual map objects on the window
+*
+*   @param target window on which the object should be drawn
 */
 void Map::render(sf::RenderWindow & target)
 {
     target.draw(this->shape);         
 }
+

@@ -1,11 +1,10 @@
-#pragma once
-#include "Fruit.h"
+﻿#pragma once
+#include "fruit.h"
 
 /**
  * @class SpecialFruit
- * 
- * Klasa przechowyjąca informacje na temat specjalnych owoców. Odpowiada za ustawienie
- * parametów tego obiektu, aktualizacje ich oraz rysowanie na ekranie.
+ *
+ * Class storing information about special fruits. Responsible for setting the parameters of this object, updating them and drawing on the screen.
  */
 class SpecialFruit : public Fruit {
 private:

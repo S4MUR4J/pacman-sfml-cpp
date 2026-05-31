@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 #include <cmath>
@@ -7,13 +7,12 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-#include "Constants.h"
+#include "constants.h"
 
 /**
  * @class Pacman
- * 
- * Klasa odpowiadająca za przechowywanie informacji o graczu, przetrzymująca logikę
- * działania gracza, inicjowanie jego parametrów i renderowanie go na ekranie
+ *
+ * Class responsible for storing player information, containing the logic of the player's operation, initializing his parameters and rendering him on the screen
  */
 class Pacman{
 private:
