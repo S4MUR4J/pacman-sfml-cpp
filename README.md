@@ -16,7 +16,7 @@ Classic Pac-Man arcade game implemented in C++ with SFML. Features grid-rail mov
 ## Requirements
 
 - CMake 3.14+
-- C++23 compiler (MSVC, GCC, Clang)
+- C++23 compiler
 
 ## Build & Run
 
