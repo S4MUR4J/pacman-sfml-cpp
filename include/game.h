@@ -1,9 +1,9 @@
-﻿#pragma once
+#pragma once
 
 #include <iostream>
-#include <ctime>
 #include <vector>
-#include <sstream>
+#include <array>
+#include <string>
 
 #include "pacman.h"
 #include "fruit.h"
@@ -11,7 +11,6 @@
 #include "special_fruit.h"
 #include "ghost.h"
 #include "constants.h"
-#include <array>
 
 /**
  * @class Game
@@ -28,9 +27,9 @@ private:
     sf::Event event;
 
     bool endGame;
+    bool debugMode;
 
     Pacman pacman;
-
     int points;
 
     std::vector<Fruit> fruits;
@@ -46,6 +45,8 @@ private:
     void initFruits();
     void initWindow();
     void manageEndGame();
+    void renderDebug();
+
 public:
     Game();
     virtual ~Game();
@@ -55,7 +56,6 @@ public:
     void pollEvents();
 
     void updateCollision();
-    
     void update();
     void render();
 };

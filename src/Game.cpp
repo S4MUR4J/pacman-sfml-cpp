@@ -1,4 +1,4 @@
-﻿#include "game.h"
+#include "game.h"
 
 /**
  * Initialization of basic game variables such as game state and score
@@ -187,5 +187,3 @@ void Game::render() {
 
     this->window->display();
 }
-
-
